@@ -1,0 +1,44 @@
+﻿@model RazorProject.Models.PersonListViewModel
+
+@{
+    Layout = null;
+    string title = "Our Razor Introduction";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    @{ 
+        var result = (bool)ViewData["HR"];
+
+    }
+    @if(result== true) {
+         <div style="color:red;font-size:30px;text-align:right;position:absolute;top:0;right:0;" >
+             Added SuccesFully
+         </div>
+         <person-list></person-list>
+    }
+    @foreach (var item in Model.Persons)
+    {
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="~/images/@item.ImageUrl" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+                <h5 class="card-title">@item.Surname</h5>
+            </div>
+        </div>
+    }
+
+    <a asp-controller="Home" asp-action="Register" class="m-5 btn btn-primary">Go Registration</a>
+
+
+
+</body>
+</html>
